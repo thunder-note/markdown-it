@@ -1,5 +1,5 @@
 {
-  "name": "markdown-it",
+  "name": "@thunder/markdown-it",
   "version": "11.0.0",
   "description": "Markdown-it - modern pluggable markdown parser.",
   "keywords": [
@@ -11,7 +11,7 @@
   ],
   "repository": "markdown-it/markdown-it",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
   "bin": {
     "markdown-it": "bin/markdown-it.js"
   },
@@ -24,7 +24,8 @@
     "gh-doc": "npm run doc && gh-pages -d apidoc -f",
     "demo": "npm run lint && node support/build_demo.js",
     "gh-demo": "npm run demo && gh-pages -d demo -f -b master -r git@github.com:markdown-it/markdown-it.github.io.git",
-    "prepublishOnly": "npm run gh-demo && npm run gh-doc"
+    "prepublishOnly": "npm run gh-demo && npm run gh-doc",
+    "build": "rollup -c"
   },
   "files": [
     "index.js",
@@ -33,13 +34,18 @@
     "dist/"
   ],
   "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "argparse": "^1.0.7",
     "entities": "~2.0.0",
     "linkify-it": "^3.0.1",
     "mdurl": "^1.0.1",
+    "punycode": "^2.1.1",
     "uc.micro": "^1.0.5"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-replace": "^2.3.3",
     "ansi": "^0.3.0",
     "autoprefixer-stylus": "^0.14.0",
     "benchmark": "~2.1.0",
@@ -65,6 +71,7 @@
     "ndoc": "^5.0.0",
     "nyc": "^15.0.1",
     "pug-cli": "^1.0.0-alpha6",
+    "rollup": "^2.23.1",
     "shelljs": "^0.8.4",
     "stylus": "^0.54.5",
     "supertest": "^4.0.2",
